@@ -24,8 +24,27 @@ function initializeElements() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function waitForElm(selector) {
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
 
+    const observer = new MutationObserver(mutations => {
+      if (document.querySelector(selector)) {
+        observer.disconnect();
+        resolve(document.querySelector(selector));
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * Preloader
@@ -42,34 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Sticky header on scroll
    */
-  setTimeout(()=> {
-    const selectHeader = document.querySelector('#header');
-    if (selectHeader) {
+  waitForElm("#header").then((element)=>{
+    if (element) {
       document.addEventListener('scroll', () => {
-        window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
+        window.scrollY > 100 ? element.classList.add('sticked') : element.classList.remove('sticked');
       });
     }
-
-  }, 300)
+  })
 
   /**
    * Scroll top button
    */
-  const scrollTop = document.querySelector('.scroll-top');
-  if (scrollTop) {
+  waitForElm(".scroll-top").then((element)=>{
     const togglescrollTop = function() {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      window.scrollY > 100 ? element.classList.add('active') : element.classList.remove('active');
     }
     window.addEventListener('load', togglescrollTop);
     document.addEventListener('scroll', togglescrollTop);
-    scrollTop.addEventListener('click', function() {
+    element.addEventListener('click', function() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
-
-  }
+  })
 
   document.querySelectorAll('input[required]').forEach(function(input) {
     input.addEventListener('invalid', function() {
@@ -95,34 +110,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
-
-setTimeout(()=> {
   /**
    * Mobile nav toggle
    */
-  const mobileNavShow = document.querySelector('.mobile-nav-show');
-  const mobileNavHide = document.querySelector('.mobile-nav-hide');
+  waitForElm("#navbar").then((element)=>{
+    const mobileNavShow = document.querySelector('.mobile-nav-show');
+    const mobileNavHide = document.querySelector('.mobile-nav-hide');
 
-  document.querySelectorAll('.mobile-nav-toggle').forEach(el => {
-    el.addEventListener('click', function(event) {
-      event.preventDefault();
-      mobileNavToogle();
+    document.querySelectorAll('.mobile-nav-toggle').forEach(el => {
+      el.addEventListener('click', function(event) {
+        event.preventDefault();
+        mobileNavToogle();
+      })
+    });
+
+    function mobileNavToogle() {
+      document.querySelector('body').classList.toggle('mobile-nav-active');
+      mobileNavShow.classList.toggle('d-none');
+      mobileNavHide.classList.toggle('d-none');
+    }
+
+    element.addEventListener('click', (event)=> {
+      if(event.target.nodeName !== "UL" && event.target.nodeName !== "A")
+        mobileNavToogle();
     })
-  });
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavShow.classList.toggle('d-none');
-    mobileNavHide.classList.toggle('d-none');
-  }
-
-  document.querySelector('#navbar')?.addEventListener('click', (event)=> {
-    if(event.target.nodeName !== "UL" && event.target.nodeName !== "A")
-      mobileNavToogle();
   })
-}, 300)
-
 
   /**
    * Hide mobile nav on same-page/hash links

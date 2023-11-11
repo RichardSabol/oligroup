@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon1.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -42,8 +42,8 @@
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2 data-aos="fade-up">Your Lightning Fast Delivery Partner</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
+          <h2 data-aos="zoom-in-left">Your Lightning Fast Delivery Partner</h2>
+          <p data-aos="zoom-in-left" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
 
 <!--          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">-->
 <!--            <input type="text" class="form-control" placeholder="ZIP code or CitY">-->
@@ -83,8 +83,8 @@
           </div>
         </div>
 
-        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-          <img src="assets/img/logo_simple.jpeg" class="img-fluid mb-3 mb-lg-0" alt="">
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in-right">
+          <img src="assets/img/blue_colorized.png" class="img-fluid mb-3 mb-lg-0" alt="">
         </div>
 
       </div>
@@ -408,9 +408,9 @@
   <script src="assets/js/main.js"></script>
 
 <script>
-  setTimeout(() => {
-    document.querySelector(".home_link").classList.add("active")
-  }, 250)
+    waitForElm(".home_link").then((element)=>{
+      element.classList.add("active")
+    })
 </script>
 
 </body>
