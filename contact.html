@@ -153,6 +153,8 @@
 <script>
   waitForElm(".contact_link").then((element)=>{
     element.classList.add("active")
+    let offerParam = new URLSearchParams(window.location.search).get('offer')
+    console.log(offerParam)
   })
 </script>
 

@@ -595,7 +595,7 @@ height: 0;
     transition: 0.5s;
     position: fixed;
     right: 35px;
-    top: 18px;
+    top: 35px;
     z-index: 9999;
   }
 
@@ -940,6 +940,14 @@ height: 0;
 /*--------------------------------------------------------------
 # Pricing Section
 --------------------------------------------------------------*/
+.pricing .hr{
+  position: relative;
+  border: none;
+  height: 2px;
+  background: var(--light-green);
+  margin: 1.2rem 0;
+}
+
 .pricing .pricing-item {
   padding: 60px 40px;
   box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15);
@@ -947,6 +955,12 @@ height: 0;
   height: 100%;
   border-top: 4px solid #fff;
   border-radius: 5px;
+}
+.pricing h2 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 30px;
+  color: var(--color-secondary);
 }
 
 .pricing h3 {
@@ -957,11 +971,18 @@ height: 0;
 }
 
 .pricing h4 {
-  font-size: 48px;
+  font-size: 40px;
   color: var(--color-primary);
   font-weight: 400;
   font-family: var(--font-primary);
   margin-bottom: 25px;
+}
+
+.pricing h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--light-blue);
 }
 
 .pricing h4 sup {
@@ -974,7 +995,6 @@ height: 0;
 }
 
 .pricing ul {
-  padding: 20px 0;
   list-style: none;
   color: #6c757d;
   text-align: left;
@@ -982,15 +1002,39 @@ height: 0;
 }
 
 .pricing ul li {
-  padding: 10px 0;
+  padding: 5px 0;
   display: flex;
   align-items: center;
 }
 
 .pricing ul i {
-  color: #059652;
+  color: var(--dark-green);
+}
+
+.pricing ul .fa {
+  text-align: center;
+  font-size: 15px;
+  padding-left: 4px;
+  padding-right: 18px;
+}
+
+.pricing ul .bi {
   font-size: 24px;
-  padding-right: 3px;
+  padding-right: 15px;
+}
+
+.map-icon{
+  color: var(--light-green);
+  transition: all 0.2s ease-in-out;
+  font-size: 20px;
+  padding-left: 0.5rem;
+  &:hover{
+    color: var(--dark-green);
+  }
+}
+
+.map-trigger{
+  cursor: pointer;
 }
 
 .pricing ul .na {
@@ -1742,6 +1786,11 @@ height: 0;
   font-size: 20px;
   margin-right: 8px;
   color: var(--color-primary);
+}
+
+.service-details highlight{
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 /*--------------------------------------------------------------
