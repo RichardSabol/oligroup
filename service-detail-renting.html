@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Oli Group - Autodoprava</title>
+  <title>Oli Group - Požičovňa</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -55,7 +55,7 @@
           <ol>
             <li><a href="index.html">Úvod</a></li>
             <li><a href="services.html">Služby</a></li>
-            <li>Autodoprava</li>
+            <li>Požičovňa vozidiel</li>
           </ol>
         </div>
       </nav>
@@ -71,6 +71,7 @@
             <div class="services-list">
               <a href="#delivery" class="active">Preprava paliet</a>
               <a href="#moving_out">Sťahovanie nábytku</a>
+              <a href="#calculator">Prepočet cien</a>
               <a href="#">Trucking</a>
               <a href="#">Packaging</a>
               <a href="#">Warehousing</a>
@@ -82,7 +83,7 @@
 
           <div class="col-lg-8">
             <img src="assets/img/service-details.jpg" alt="" class="img-fluid services-img">
-            <h3 id="delivery">Autodoprava do 3,5t</h3>
+            <h3 id="delivery">Požičovňa vozidiel</h3>
             <p>
               Sme spoľahlivým a rýchlym partnerom pre vaše podnikanie. Disponujeme vlastným vozovým parkom, umožňujúc prepravu tovaru do 3.5 ton za konkurencieschopné ceny v <highlight>celej Európskej únii</highlight>.
               V prípade potreby zabezpečíme prepravu prostredníctvom zmluvných dopravcov, aby sme plne uspokojili dopyt našich klientov.
@@ -95,16 +96,97 @@
               <li><i class="bi bi-check-circle"></i> <span><highlight>Flexibilita a dostupnosť</highlight> - V prípade potreby využijeme zmluvných dopravcov na plné uspokojenie dopytu klientov.</span></li>
               <li><i class="bi bi-check-circle"></i> <span><highlight>Individuálny prístup doručovania</highlight> - Špecializujeme sa na paletový tovar a poskytujeme presné a bezproblémové doručenie, pričom zdôrazňujeme osobitý prístup k potrebám každého klienta</span></li>
             </ul>
-
-            <p>
-              Medzi naše činnosti taktiež patrí <a href="service-detail-warehouse.html">uloženie tovaru vo vlastnom sklade</a> a <a href="service-detail-renting.html">prenájom našich vozidiel</a>.
-            </p>
             <h4 id="moving_out">Sťahovanie nábytku</h4>
             <p>Ponúkame sťahovanie nábytku</p>
           </div>
 
         </div>
 
+      </div>
+<!--      Calculator-->
+      <div class="container mt-5" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-lg-4"></div>
+
+          <div class="col-lg-8">
+            <h3 id="calculator">Prepočet cien</h3>
+
+            <div class="row gy-8 justify-content-center" id="carType">
+              <div class="col-lg-4 col-md-6">
+                <div class="card vehicle" data-aos="fade-up" data-aos-delay="100" onclick="handleCardClick(this, 'Fabia')">
+                  <div class="card-img">
+                    <img src="assets/img/fabia.png" alt="Škoda Fabia">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Škoda Fabia</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <div class="card vehicle" data-aos="fade-up" data-aos-delay="100" onclick="handleCardClick(this, 'Octavia')">
+                  <div class="card-img">
+                    <img src="assets/img/octavia.jpg" alt="Škoda Octavia">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Škoda Octavia</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <div class="card vehicle" data-aos="fade-up" data-aos-delay="100" onclick="handleCardClick(this, 'Superb')">
+                  <div class="card-img">
+                    <img src="assets/img/superb.png" alt="Škoda Superb">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Škoda Superb</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <div class="card vehicle" data-aos="fade-up" data-aos-delay="100" onclick="handleCardClick(this, 'Trafic')">
+                  <div class="card-img">
+                    <img src="assets/img/renault.png" alt="Renault Trafic">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Renault Trafic</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center gap-5 flex-column col-lg-6 col-sm-12 m-auto mt-5">
+
+              <div class="form-group w-100">
+                <label for="distance">Zadajte vzdialenosť</label>
+                <div class="input-group mb-3">
+                  <input id="distance" min="0" step="1" type="number" class="form-control">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="inputGroup-sizing-default">km</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group w-100">
+                <label for="distance">Výsledná suma </label>
+                <div class="input-group">
+                  <input id="result" disabled value="0,00" type="text" class="form-control">
+                  <div class="input-group-append">
+                    <span class="input-group-text">€ / deň</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
       </div>
     </section><!-- End Service Details Section -->
   </main><!-- End #main -->

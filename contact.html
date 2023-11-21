@@ -116,8 +116,23 @@
               <div class="form-group mt-3">
                 <textarea style="min-height: 3rem" class="form-control" name="message" rows="5" placeholder="Správa" required data-required-message="Správa nemôže byť prázdna"></textarea>
               </div>
+              <div class="templates">
+                <a data-placeholder=
+                           "Dobrý deň,
+mal by som záujem o pracovnú ponuku ...
+
+S pozdravom ..."
+                   title="Šablóna odpovede na pracovnú ponuku">Odpoveď na ponuku</a>
+                <a data-placeholder=
+                           "Dobrý deň,
+rád by som sa informoval o dostupnosti vozidla ...
+
+S pozdravom ..."
+                   title="Šablóna na zistenie dostupnosti">Zistenie dostupnosti</a>
+                <a data-placeholder="undo">Krok späť</a>
+              </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Načítavam...</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Správa bola odoslaná, čoskoro sa Vám ozveme!</div>
               </div>
@@ -150,11 +165,55 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const textarea = document.querySelector('textarea');
+    const templates = document.querySelectorAll('.templates a');
+    let messageBackup = [""]
+    let textBackup = ""
+
+
+    templates.forEach(template => {
+      template.addEventListener('mouseover', function () {
+        let placeholder = this.getAttribute('data-placeholder')
+        textBackup = textarea.value;
+        if(placeholder === "undo") {
+          textarea.value = ""
+          textarea.placeholder = textBackup.length === 0 ? "Správa" : messageBackup[messageBackup.length-1];
+          return
+        }
+        textarea.value = ""
+        textarea.placeholder = placeholder
+      })
+      template.addEventListener('mouseleave', function () {
+        if (messageBackup.length === 0 && textBackup.length === 0) {
+          textarea.value = ""
+          textarea.placeholder = "Správa"
+          return
+        }
+        textarea.value = textBackup
+      })
+        template.addEventListener('click', function () {
+          let placeholder = this.getAttribute('data-placeholder')
+          if(placeholder === "undo") {
+            textBackup = messageBackup.length > 0 ? messageBackup.pop() : "";
+            textarea.value = ""
+            textarea.placeholder = messageBackup.length === 0 ? "" : messageBackup[messageBackup.length-1];
+            return
+          }
+          if(messageBackup.length < 20 && messageBackup[messageBackup.length-1] !== textBackup) {
+            messageBackup.push(textBackup)
+          }
+            textarea.value = placeholder
+            textBackup = placeholder;
+
+        });
+    });
+  });
   waitForElm(".contact_link").then((element)=>{
     element.classList.add("active")
     let offerParam = new URLSearchParams(window.location.search).get('offer')
-    console.log(offerParam)
   })
 </script>
 

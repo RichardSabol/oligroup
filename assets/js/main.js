@@ -7,6 +7,15 @@ const config = {
   email_config: "doprava@oligroup.sk"
 };
 
+const basePrices = {
+  'Fabia': 30,
+  'Trafic': 70,
+  'Octavia': 50,
+  'Superb': 80,
+};
+const additionalPricePerKm = 0.12;
+const dailyDistance = 200;
+
 function initializeElements() {
   for (let key in config) {
     if (Object.prototype.hasOwnProperty.call(config, key)) {
@@ -53,6 +62,44 @@ function toggleMap(elementId){
   }
 }
 
+function calculateRentalPrice(carType, distance) {
+
+  const basePrice = basePrices[carType];
+
+  if (distance <= dailyDistance) {
+    return basePrice;
+  } else {
+    const additionalDistance = distance - dailyDistance;
+    const additionalPrice = additionalDistance * additionalPricePerKm;
+    return basePrice + additionalPrice;
+  }
+}
+
+let activeVehicle;
+function updateResult() {
+  if(!activeVehicle)
+    return
+  const distance = parseFloat(document.getElementById('distance').value);
+  const totalPrice = calculateRentalPrice(activeVehicle, isNaN(distance) ? 0 : distance);
+
+  document.getElementById('result').value = totalPrice.toFixed(2).replace(".", ",");
+}
+
+function handleCardClick(card, carType) {
+  // Remove "active" class from all cards
+  document.querySelectorAll('.card').forEach(function (el) {
+    el.classList.remove('active');
+  });
+
+  // Add "active" class to the clicked card
+  card.classList.add('active');
+
+  // Output the clicked card's name (you can use it as needed)
+  activeVehicle = carType;
+  updateResult()
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /**
@@ -94,6 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   })
+
+  document.getElementById('distance')?.addEventListener('input', updateResult);
 
   document.querySelectorAll('input[required]').forEach(function(input) {
     input.addEventListener('invalid', function() {
