@@ -515,8 +515,8 @@ height: 0;
   .navbar {
     position: fixed;
     top: 0;
-    right: -80%;
-    width: 100%;
+    right: -100%;
+    width: 80%;
     max-width: 400px;
     bottom: 0;
     transition: 0.3s;
