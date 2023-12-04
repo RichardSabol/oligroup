@@ -353,6 +353,7 @@ height: 0;
 }
 
 .header .logo h1 {
+  opacity: 0;
   margin-left: 1rem;
   transition: all 0.8s ease-out;
   font-size: 30px;
@@ -362,6 +363,7 @@ height: 0;
 }
 
 .header.sticked .logo h1 {
+  opacity: 1;
   color: #fff;
   margin: 0;
   transform: translateX(8rem);
