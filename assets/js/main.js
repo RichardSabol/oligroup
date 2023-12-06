@@ -9,9 +9,13 @@ const config = {
 
 const basePrices = {
   'Fabia': 30,
-  'Trafic': 70,
+  'Doblo': 45,
   'Octavia': 50,
   'Superb': 80,
+  'Ducato': 85,
+  'Master': 85,
+  'Jumper': 85,
+  'Movano': 85,
 };
 const additionalPricePerKm = 0.12;
 const dailyDistance = 200;

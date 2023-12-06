@@ -353,7 +353,7 @@ height: 0;
 }
 
 .header .logo h1 {
-  opacity: 0;
+  /*opacity: 0;*/
   margin-left: 1rem;
   transition: all 0.8s ease-out;
   font-size: 30px;
@@ -363,7 +363,7 @@ height: 0;
 }
 
 .header.sticked .logo h1 {
-  opacity: 1;
+  /*opacity: 1;*/
   color: #fff;
   margin: 0;
   transform: translateX(8rem);
@@ -885,7 +885,7 @@ height: 0;
 # Call To Action Section
 --------------------------------------------------------------*/
 .call-to-action {
-  background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../img/cta-bg.jpg") center center;
+  background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../img/action_bg.png") center center;
   background-size: cover;
   padding: 100px 0;
 }
@@ -1194,10 +1194,17 @@ height: 0;
 --------------------------------------------------------------*/
 .testimonials {
   padding: 80px 0;
-  background: url("../img/testimonials-bg.jpg") no-repeat;
+  background: url("../img/action_bg.png") no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;
+  user-select: none;
+}
+
+.car-prop {
+  &>i {
+    margin-right: 0.5rem;
+  }
 }
 
 .testimonials::before {
