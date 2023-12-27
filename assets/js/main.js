@@ -2,8 +2,9 @@ const EMAIL_SEND_LIMIT_HOURS = 1;
 
 const config = {
   title_config: "Oli Group",
-  address_config: "Hlavná 14,<br>080 01 Prešov,<br>Slovensko",
+  address_config: "Rovniakova 1666/12,<br>Bratislava 851 02 - <br>mestská časť Petržalka,<br>Slovensko",
   phone_config: "+421 904 529 748",
+  phone_config1: "+421 940 882 781",
   email_config: "doprava@oligroup.sk"
 };
 
