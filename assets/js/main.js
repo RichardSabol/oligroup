@@ -4,8 +4,8 @@ const config = {
   title_config: "Oli Group",
   address_config: "Rovniakova 1666/12,<br>Bratislava 851 02 - <br>mestská časť Petržalka,<br>Slovensko",
   phone_config: "+421 904 529 748",
-  phone_config1: "+421 940 882 781",
-  email_config: "doprava@oligroup.sk"
+  phone_config1: "+421 940 032 333",
+  email_config: "oligroup@oligroup.sk"
 };
 
 const basePrices = {
@@ -30,6 +30,9 @@ function initializeElements() {
           element.href = `mailto:${config[key]}`;
         }
         if(key === "phone_config" && element.tagName === "A"){
+          element.href = `tel:${config[key].replaceAll(" ", "")}`;
+        }
+        if(key === "phone_config1" && element.tagName === "A"){
           element.href = `tel:${config[key].replaceAll(" ", "")}`;
         }
         element.innerHTML = config[key];
@@ -164,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let lastEmailTime = localStorage.getItem('lastEmailTime');
     let currentTime = new Date().getTime(); // Get current time in milliseconds
-
-    if (lastEmailTime && (currentTime - parseInt(lastEmailTime, 10) < (EMAIL_SEND_LIMIT_HOURS*1000*60*60))) {
-      alert('Je možné odoslať len 1 email za '+ EMAIL_SEND_LIMIT_HOURS +(EMAIL_SEND_LIMIT_HOURS === 1 ? 'hodinu' : EMAIL_SEND_LIMIT_HOURS < 5 ? 'hodiny' : 'hodín'));
+    let timeLeft = currentTime - parseInt(lastEmailTime, 10);
+    if (lastEmailTime && timeLeft < (EMAIL_SEND_LIMIT_HOURS*1000*60*60)) {
+      alert('Je možné odoslať len 1 email za '+ EMAIL_SEND_LIMIT_HOURS +(EMAIL_SEND_LIMIT_HOURS === 1 ? ' hodinu.' : EMAIL_SEND_LIMIT_HOURS < 5 ? ' hodiny.' : ' hodín.') + "\n Ostáva " + Math.ceil((EMAIL_SEND_LIMIT_HOURS * 1000 * 60 * 60 - timeLeft) / (1000 * 60)) + " minút.");
     } else {
       localStorage.setItem('lastEmailTime', currentTime.toString());
       event.target.submit();

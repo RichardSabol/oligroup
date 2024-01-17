@@ -341,7 +341,10 @@ height: 0;
   background: var(--dark-green);
   opacity: 0.9;
   padding: 15px 0;
-  box-shadow: 0 2px 8px 2px rgb(0 0 0 / 58%)
+  box-shadow: 0 2px 8px 2px rgb(0 0 0 / 58%);
+  & .mobile-nav-hide{
+    top: 16px;
+  }
 }
 
 .header .logo img {
@@ -628,7 +631,7 @@ height: 0;
     line-height: 0;
     transition: 0.5s;
     position: fixed;
-    right: 35px;
+    right: 20px;
     top: 35px;
     z-index: 9999;
   }
@@ -1064,6 +1067,21 @@ height: 0;
   padding-left: 0.5rem;
   &:hover{
     color: var(--dark-green);
+  }
+}
+
+.reserve-button {
+  background: var(--dark-green);
+  border-radius: 0.5rem;
+  width: 25rem;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15);
+  &:hover{
+    background: var(--light-green);
+  }
+  & > a{
+    color: var(--dark-blue);
   }
 }
 
