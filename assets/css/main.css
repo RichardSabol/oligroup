@@ -1050,14 +1050,42 @@ height: 0;
 
 .pricing ul .fa {
   text-align: center;
-  font-size: 15px;
-  padding-left: 4px;
-  padding-right: 18px;
+  font-size: 20px;
+  padding-left: 2px;
+  padding-right: 15px;
 }
 
 .pricing ul .bi {
   font-size: 24px;
   padding-right: 15px;
+}
+
+.pricing-container {
+  -webkit-columns: 25rem 3;
+  -moz-columns: 25rem 3;
+  columns: 25rem 3;
+  align-items: flex-start;
+  width: 100%;
+  .c-pricing-item {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: inline-block;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-pricing-item {
+    width: 50%
+  }
+}
+
+@media (min-width: 1024px) {
+  .c-pricing-item {
+    width: 30%;
+  }
 }
 
 .map-icon{
